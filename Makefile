@@ -66,7 +66,7 @@ test: all
 
 %.js:
 	@rm -f $@
-	@echo '(function(exports){' > $@
+	@echo '(function (exports) {' > $@
 	cat $(filter %.js,$^) >> $@
 	@echo '})(this);' >> $@
 	@chmod a-w $@

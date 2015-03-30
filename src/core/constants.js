@@ -1,2 +1,2 @@
 // Euler's constant.
-science.EULER = .5772156649015329;
+science.EULER = 0.5772156649015329;

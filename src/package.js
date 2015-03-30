@@ -9,7 +9,7 @@ require("util").puts(JSON.stringify({
   "author": {"name": "Jason Davies", "url": "http://www.jasondavies.com/"},
   "repository": {"type": "git", "url": "http://github.com/jasondavies/science.js.git"},
   "devDependencies": {
-    "uglify-js": "1.2.6",
-    "vows": "0.6.0"
+    "uglify-js": "2.4.19",
+    "vows": "0.8.1"
   }
 }, null, 2));

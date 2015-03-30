@@ -1,14 +1,14 @@
-(function(exports){
-(function(exports){
+(function (exports) {
+(function (exports) {
 science = {version: "1.9.2"}; // semver
 science.ascending = function(a, b) {
   return a - b;
 };
 // Euler's constant.
-science.EULER = .5772156649015329;
+science.EULER = 0.5772156649015329;
 // Compute exp(x) - 1 accurately for small x.
 science.expm1 = function(x) {
-  return (x < 1e-5 && x > -1e-5) ? x + .5 * x * x : Math.exp(x) - 1;
+  return (x < 1e-5 && x > -1e-5) ? x + 0.5 * x * x : Math.exp(x) - 1;
 };
 science.functor = function(v) {
   return typeof v === "function" ? v : function() { return v; };
@@ -72,7 +72,7 @@ science.zeroes = function(n) {
   return a;
 };
 })(this);
-(function(exports){
+(function (exports) {
 science.lin = {};
 science.lin.decompose = function() {
 
@@ -834,7 +834,8 @@ science.lin.gaussjordan = function(m, eps) {
       w = m[0].length,
       y = -1,
       y2,
-      x;
+      x,
+      c;
 
   while (++y < h) {
     var maxrow = y;
@@ -855,7 +856,7 @@ science.lin.gaussjordan = function(m, eps) {
 
     // Eliminate column y.
     y2 = y; while (++y2 < h) {
-      var c = m[y2][y] / m[y][y];
+      c = m[y2][y] / m[y][y];
       x = y - 1; while (++x < w) {
         m[y2][x] -= m[y][x] * c;
       }
@@ -864,7 +865,7 @@ science.lin.gaussjordan = function(m, eps) {
 
   // Backsubstitute.
   y = h; while (--y >= 0) {
-    var c = m[y][y];
+    c = m[y][y];
     y2 = -1; while (++y2 < y) {
       x = w; while (--x >= y) {
         m[y2][x] -=  m[y][x] * m[y2][y] / c;
@@ -961,7 +962,7 @@ science.lin.tridag = function(a, b, c, d, x, n) {
   }
 };
 })(this);
-(function(exports){
+(function (exports) {
 science.stats = {};
 // Bandwidth selectors for Gaussian kernels.
 // Based on R's implementations in `stats.bw`.
