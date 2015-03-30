@@ -9,7 +9,8 @@ science.vector.gaussjordan = function(m, eps) {
       w = m[0].length,
       y = -1,
       y2,
-      x;
+      x,
+      c;
 
   while (++y < h) {
     var maxrow = y;
@@ -30,7 +31,7 @@ science.vector.gaussjordan = function(m, eps) {
 
     // Eliminate column y.
     y2 = y; while (++y2 < h) {
-      var c = m[y2][y] / m[y][y];
+      c = m[y2][y] / m[y][y];
       x = y - 1; while (++x < w) {
         m[y2][x] -= m[y][x] * c;
       }
@@ -39,7 +40,7 @@ science.vector.gaussjordan = function(m, eps) {
 
   // Backsubstitute.
   y = h; while (--y >= 0) {
-    var c = m[y][y];
+    c = m[y][y];
     y2 = -1; while (++y2 < y) {
       x = w; while (--x >= y) {
         m[y2][x] -=  m[y][x] * m[y2][y] / c;
