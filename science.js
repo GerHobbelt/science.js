@@ -1,12 +1,14 @@
-(function(){science = {version: "1.7.0"}; // semver
+(function () {
+    
+science = {version: "1.7.0"}; // semver
 science.ascending = function(a, b) {
   return a - b;
 };
 // Euler's constant.
-science.EULER = .5772156649015329;
+science.EULER = 0.5772156649015329;
 // Compute exp(x) - 1 accurately for small x.
 science.expm1 = function(x) {
-  return (x < 1e-5 && x > -1e-5) ? x + .5 * x * x : Math.exp(x) - 1;
+  return (x < 1e-5 && x > -1e-5) ? x + 0.5 * x * x : Math.exp(x) - 1;
 };
 science.functor = function(v) {
   return typeof v === "function" ? v : function() { return v; };
@@ -121,7 +123,8 @@ science.vector.gaussjordan = function(m, eps) {
       w = m[0].length,
       y = -1,
       y2,
-      x;
+      x,
+      c;
 
   while (++y < h) {
     var maxrow = y;
@@ -142,7 +145,7 @@ science.vector.gaussjordan = function(m, eps) {
 
     // Eliminate column y.
     y2 = y; while (++y2 < h) {
-      var c = m[y2][y] / m[y][y];
+      c = m[y2][y] / m[y][y];
       x = y - 1; while (++x < w) {
         m[y2][x] -= m[y][x] * c;
       }
@@ -151,7 +154,7 @@ science.vector.gaussjordan = function(m, eps) {
 
   // Backsubstitute.
   y = h; while (--y >= 0) {
-    var c = m[y][y];
+    c = m[y][y];
     y2 = -1; while (++y2 < y) {
       x = w; while (--x >= y) {
         m[y2][x] -=  m[y][x] * m[y2][y] / c;
@@ -167,7 +170,7 @@ science.vector.gaussjordan = function(m, eps) {
 };
 // Find matrix inverse using Gauss-Jordan.
 science.vector.inverse = function(m) {
-  var n = m.length
+  var n = m.length,
       i = -1;
 
   // Check if the matrix is square.
@@ -222,4 +225,5 @@ science.vector.transpose = function(a) {
   }
   return b;
 };
-})()
+
+})();

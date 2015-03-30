@@ -1,4 +1,6 @@
-(function(){science.stats = {};
+(function () {
+    
+science.stats = {};
 // Bandwidth selectors for Gaussian kernels.
 // Based on R's implementations in `stats.bw`.
 science.stats.bandwidth = {
@@ -717,4 +719,5 @@ science.stats.variance = function(x) {
   }
   return s / (n - 1);
 };
-})()
+
+})();

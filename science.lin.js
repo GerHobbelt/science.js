@@ -1,4 +1,6 @@
-(function(){science.lin = {};
+(function () {
+    
+science.lin = {};
 /**
  * Solves tridiagonal systems of linear equations.
  *
@@ -24,4 +26,5 @@ science.lin.tridag = function(a, b, c, d, x, n) {
     x[i] = (d[i] - c[i] * x[i + 1]) / b[i];
   }
 };
-})()
+
+})();
