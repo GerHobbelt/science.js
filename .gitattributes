@@ -1,0 +1,21 @@
+*.sh            text eol=lf
+*.php           text eol=lf
+*.inc           text eol=lf
+*.html          text eol=lf
+*.js            text eol=lf
+*.css           text eol=lf
+*.ini           text eol=lf
+*.txt           text eol=lf
+*.xml           text eol=lf
+*.md            text eol=lf
+*.markdown      text eol=lf
+
+
+# files built by Make
+science.js             -diff merge=ours
+science.lin.js         -diff merge=ours
+science.lin.min.js     -diff merge=ours
+science.min.js         -diff merge=ours
+science.stats.js       -diff merge=ours
+science.stats.min.js   -diff merge=ours
+package.json           -diff merge=ours
