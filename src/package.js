@@ -8,8 +8,8 @@ require("util").puts(JSON.stringify({
   "homepage": "https://github.com/jasondavies/science.js",
   "author": {"name": "Jason Davies", "url": "http://www.jasondavies.com/"},
   "repository": {"type": "git", "url": "http://github.com/jasondavies/science.js.git"},
-  "dependencies": {
-    "uglify-js": "1.0.6",
-    "vows": "0.5.11"
+  "devDependencies": {
+    "uglify-js": "2.4.19",
+    "vows": "0.8.1"
   }
 }, null, 2));
