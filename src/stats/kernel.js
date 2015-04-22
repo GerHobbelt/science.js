@@ -1,7 +1,7 @@
 // See <http://en.wikipedia.org/wiki/Kernel_(statistics)>.
 science.stats.kernel = {
   uniform: function(u) {
-    if (u <= 1 && u >= -1) return .5;
+    if (u <= 1 && u >= -1) return 0.5;
     return 0;
   },
   triangular: function(u) {
@@ -9,7 +9,7 @@ science.stats.kernel = {
     return 0;
   },
   epanechnikov: function(u) {
-    if (u <= 1 && u >= -1) return .75 * (1 - u * u);
+    if (u <= 1 && u >= -1) return 0.75 * (1 - u * u);
     return 0;
   },
   quartic: function(u) {
@@ -27,7 +27,7 @@ science.stats.kernel = {
     return 0;
   },
   gaussian: function(u) {
-    return 1 / Math.sqrt(2 * Math.PI) * Math.exp(-.5 * u * u);
+    return 1 / Math.sqrt(2 * Math.PI) * Math.exp(-0.5 * u * u);
   },
   cosine: function(u) {
     if (u <= 1 && u >= -1) return Math.PI / 4 * Math.cos(Math.PI / 2 * u);

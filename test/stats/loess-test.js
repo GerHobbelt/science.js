@@ -11,15 +11,15 @@ var loess = science.stats.loess();
 suite.addBatch({
   "loess": {
     "one point": function() {
-      var res = loess([.5], [.7]);
-      assert.deepEqual([.7], res);
+      var res = loess([0.5], [0.7]);
+      assert.deepEqual([0.7], res);
     },
     "two points": function() {
-      var res = loess([.5, .6], [.7, .8]);
-      assert.deepEqual([.7, .8], res);
+      var res = loess([0.5, 0.6], [0.7, 0.8]);
+      assert.deepEqual([0.7, 0.8], res);
     },
     "straight line": function() {
-      var loess = science.stats.loess().bandwidth(.6),
+      var loess = science.stats.loess().bandwidth(0.6),
           y = [2, 4, 6, 8, 10],
           res = loess([1, 2, 3, 4, 5], y);
       assert.deepEqual(y, res);
@@ -28,8 +28,8 @@ suite.addBatch({
       var numPoints = 100;
       var xval = [];
       var yval = [];
-      var xnoise = .1;
-      var ynoise = .2;
+      var xnoise = 0.1;
+      var ynoise = 0.2;
 
       generateSineData(numPoints, xval, yval, xnoise, ynoise);
 
@@ -57,23 +57,24 @@ suite.addBatch({
       var numPoints = 100,
           xval = [],
           yval = [],
-          xnoise = .1,
-          ynoise = .2;
+          xnoise = 0.1,
+          ynoise = 0.2,
+          i;
 
       generateSineData(numPoints, xval, yval, xnoise, ynoise);
 
       // Check that variance decreases as bandwidth increases
       var loess = science.stats.loess().robustnessIterations(4);
-      var bandwidths = [.1, .5, 1];
+      var bandwidths = [0.1, 0.5, 1];
       var variances = [0, 0, 0];
-      for (var i = 0; i < bandwidths.length; i++) {
+      for (i = 0; i < bandwidths.length; i++) {
         var res = loess.bandwidth(bandwidths[i])(xval, yval);
         for (var j = 1; j < res.length; ++j) {
           variances[i] += Math.pow(res[j] - res[j - 1], 2);
         }
       }
 
-      for (var i = 1; i < variances.length; ++i) {
+      for (i = 1; i < variances.length; ++i) {
         assert.isTrue(variances[i] < variances[i - 1]);
       }
     },
@@ -81,8 +82,9 @@ suite.addBatch({
       var numPoints = 100,
           xval = [],
           yval = [],
-          xnoise = .1,
-          ynoise = .1;
+          xnoise = 0.1,
+          ynoise = 0.1,
+          i;
 
       generateSineData(numPoints, xval, yval, xnoise, ynoise);
 
@@ -95,7 +97,7 @@ suite.addBatch({
 
       var variances = [0, 0, 0, 0];
       var loess = science.stats.loess();
-      for (var i = 0; i < 4; i++) {
+      for (i = 0; i < 4; i++) {
         var res = loess.robustnessIterations(i)(xval, yval);
 
         for (var j = 1; j < res.length; ++j) {
@@ -103,7 +105,7 @@ suite.addBatch({
         }
       }
 
-      for (var i = 1; i < variances.length; ++i) {
+      for (i = 1; i < variances.length; ++i) {
         assert.isTrue(variances[i] < variances[i - 1]);
       }
     },
@@ -128,7 +130,7 @@ suite.addBatch({
       var res = loess(xval, yval);
       assert.equal(xval.length, res.length);
       for (var i = 0; i < res.length; ++i) {
-        assert.isTrue(Math.abs(yref[i] - res[i]) < .02);
+        assert.isTrue(Math.abs(yref[i] - res[i]) < 0.02);
       }
     }
   }

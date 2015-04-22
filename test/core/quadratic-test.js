@@ -17,7 +17,7 @@ suite.addBatch({
       assert.deepEqual(quadratic(1, -2, 1), [1]);
     },
     "two roots": function(quadratic) {
-      assert.deepEqual(quadratic(1, 1, -2), [-2.5, .5]);
+      assert.deepEqual(quadratic(1, 1, -2), [-2.5, 0.5]);
     }
   },
   "complex roots": {

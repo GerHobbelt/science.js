@@ -11,7 +11,7 @@ var xAxis = d3.svg.axis().scale(x),
 var vis = d3.select("#vis")
     .data([{
       x: d3.range(n).map(function(i) { return i / n; }),
-      y: d3.range(n).map(function(i) { return Math.sin(4 * i * Math.PI / n) + (Math.random() - .5) / 5; })
+      y: d3.range(n).map(function(i) { return Math.sin(4 * i * Math.PI / n) + (Math.random() - 0.5) / 5; })
     }])
   .append("svg")
     .attr("width", w + p + p)
@@ -19,7 +19,7 @@ var vis = d3.select("#vis")
   .append("g")
     .attr("transform", "translate(" + p + "," + p + ")");
 
-var loess = science.stats.loess().bandwidth(.2),
+var loess = science.stats.loess().bandwidth(0.2),
     line = d3.svg.line()
       .x(function(d) { return x(d[0]); })
       .y(function(d) { return y(d[1]); });

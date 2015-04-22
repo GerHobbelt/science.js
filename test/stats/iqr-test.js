@@ -11,7 +11,7 @@ suite.addBatch({
     "returns correct interquartile ranges": function() {
       assert.isTrue(isNaN(science.stats.iqr([])));
       assert.equal(science.stats.iqr([1]), 0);
-      assert.equal(science.stats.iqr([1, 2]), .5);
+      assert.equal(science.stats.iqr([1, 2]), 0.5);
       assert.equal(science.stats.iqr([1, 2, 3]), 1);
       assert.equal(science.stats.iqr([1, 2, 3, 4]), 1.5);
       assert.equal(science.stats.iqr([1, 2, 3, 4, 5]), 2);
