@@ -1,6 +1,6 @@
 (function (exports) {
 (function (exports) {
-science = {version: "1.9.2"}; // semver
+science = {version: "1.9.3"}; // semver
 science.ascending = function(a, b) {
   return a - b;
 };
@@ -1076,12 +1076,12 @@ science.stats.erf = function(x) {
     * t * Math.exp(-x * x));
 };
 science.stats.phi = function(x) {
-  return .5 * (1 + science.stats.erf(x / Math.SQRT2));
+  return 0.5 * (1 + science.stats.erf(x / Math.SQRT2));
 };
 // See <http://en.wikipedia.org/wiki/Kernel_(statistics)>.
 science.stats.kernel = {
   uniform: function(u) {
-    if (u <= 1 && u >= -1) return .5;
+    if (u <= 1 && u >= -1) return 0.5;
     return 0;
   },
   triangular: function(u) {
@@ -1089,7 +1089,7 @@ science.stats.kernel = {
     return 0;
   },
   epanechnikov: function(u) {
-    if (u <= 1 && u >= -1) return .75 * (1 - u * u);
+    if (u <= 1 && u >= -1) return 0.75 * (1 - u * u);
     return 0;
   },
   quartic: function(u) {
@@ -1107,7 +1107,7 @@ science.stats.kernel = {
     return 0;
   },
   gaussian: function(u) {
-    return 1 / Math.sqrt(2 * Math.PI) * Math.exp(-.5 * u * u);
+    return 1 / Math.sqrt(2 * Math.PI) * Math.exp(-0.5 * u * u);
   },
   cosine: function(u) {
     if (u <= 1 && u >= -1) return Math.PI / 4 * Math.cos(Math.PI / 2 * u);
@@ -1417,7 +1417,7 @@ science.stats.iqr = function(x) {
 };
 // Based on org.apache.commons.math.analysis.interpolation.LoessInterpolator
 // from http://commons.apache.org/math/
-science.stats.loess = function() {    
+science.stats.loess = function() {
   var bandwidth = .3,
       robustnessIters = 2,
       accuracy = 1e-12;
@@ -1530,9 +1530,7 @@ science.stats.loess = function() {
       // Recompute the robustness weights.
 
       // Find the median residual.
-      var sortedResiduals = residuals.slice();
-      sortedResiduals.sort();
-      var medianResidual = sortedResiduals[Math.floor(n / 2)];
+      var medianResidual = science.stats.median(residuals);
 
       if (Math.abs(medianResidual) < accuracy)
         break;
@@ -1705,12 +1703,12 @@ science.stats.distribution.gaussian = function() {
 
   gaussian.pdf = function(x) {
     x = (x - mean) / sigma;
-    return science_stats_distribution_gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+    return science_stats_distribution_gaussianConstant * Math.exp(-0.5 * x * x) / sigma;
   };
 
   gaussian.cdf = function(x) {
     x = (x - mean) / sigma;
-    return .5 * (1 + science.stats.erf(x / Math.SQRT2));
+    return 0.5 * (1 + science.stats.erf(x / Math.SQRT2));
   };
 
   gaussian.mean = function(x) {
